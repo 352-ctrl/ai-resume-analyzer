@@ -8,6 +8,7 @@ import hashlib
 import json
 import redis
 import logging
+import os
 
 app = FastAPI(title="AI Resume Analyzer API")
 
@@ -27,7 +28,7 @@ app.add_middleware(
 # 初始化 Redis 客户端 (设置 decode_responses=True 自动将字节解码为字符串)
 # 设定一个较短的 socket_timeout，防止未开启 Redis 时请求阻塞过久
 redis_client = redis.Redis(
-    host='localhost',
+    host=os.getenv('REDIS_HOST', 'localhost'), # 容器内读取环境变量，本地运行默认 localhost
     port=6379,
     db=0,
     decode_responses=True,

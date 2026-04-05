@@ -37,7 +37,7 @@ const analyzeResume = async () => {
   formData.append('job_description', jobDescription.value)
 
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/analyze', formData, {
+    const response = await axios.post('/api/analyze', formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     })
     result.value = response.data
