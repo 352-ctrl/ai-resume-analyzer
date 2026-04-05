@@ -1,5 +1,5 @@
 # 第一阶段：Node.js 编译打包
-FROM node:18-alpine as build-stage
+FROM node:22-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
